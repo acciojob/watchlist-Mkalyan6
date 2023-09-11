@@ -27,19 +27,19 @@ public class MovieRepository {
         return;
     }
 
-    public ResponseEntity<String> addMovieDirectorPair(String movieName, String dirName) {
+    public String addMovieDirectorPair(String movieName, String dirName) {
         // pair movie and director object based on thier names given as params
-        if (movieName == null || dirName == null) return ResponseEntity.ok("movie name or director name is null");
+        if (movieName == null || dirName == null) return "movie name or director name is null";
         if (DirList.containsKey(dirName)) {
             if (MovieList.containsKey(movieName)) {
                 // both movie and director present in db
                 List list = MovieListForDir.getOrDefault(dirName, new ArrayList<>());
                 list.add(MovieList.get(movieName));
                 MovieListForDir.put(dirName, list);
-                return ResponseEntity.ok("Successfully paired director and their movies");
+                return "Successfully paired director and their movies";
             }
         }
-        return ResponseEntity.ok("director or movie name not found");
+        return "director or movie name not found";
     }
 
     public Movie getMovieByName(String name) {

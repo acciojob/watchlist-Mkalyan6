@@ -1,7 +1,5 @@
 package com.driver;
 
-import com.driver.Director;
-import com.driver.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,31 +18,31 @@ public class MovieService {
         Repository.addDirector(director);
     }
 
-    public ResponseEntity addMovieDirectorPair(String movieName, String dirName) {
-        return ResponseEntity.ok(Repository.addMovieDirectorPair(movieName,dirName));
+    public String addMovieDirectorPair(String movieName, String dirName) {
+        return Repository.addMovieDirectorPair(movieName,dirName);
     }
 
     public Movie getMovieByName(String name) {
         return Repository.getMovieByName(name);
     }
 
-    public Object getDirectorByName(String dirName) {
+    public Director getDirectorByName(String dirName) {
         return Repository.getDirectorByName(dirName);
     }
 
-    public ResponseEntity getMoviesByDirectorName(String dirName) {
-        return ResponseEntity.ok(Repository.getMoviesByDirectorName(dirName));
+    public List<Movie> getMoviesByDirectorName(String dirName) {
+        return Repository.getMoviesByDirectorName(dirName);
     }
 
-    public ResponseEntity<List<String>> findAllMovies() {
-        return ResponseEntity.ok(Repository.findAllMovies());
+    public List<String> findAllMovies() {
+        return Repository.findAllMovies();
     }
 
-    public ResponseEntity deleteDirectorByName(String dirName) {
-        return ResponseEntity.ok(Repository.deleteDirectorByName(dirName));
+    public String deleteDirectorByName(String dirName) {
+        return Repository.deleteDirectorByName(dirName);
     }
 
-    public ResponseEntity deleteAllDirectors() {
-        return ResponseEntity.ok(Repository.deleteAllDirectors());
+    public String deleteAllDirectors() {
+        return Repository.deleteAllDirectors();
     }
 }
