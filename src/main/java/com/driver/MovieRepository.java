@@ -80,13 +80,18 @@ public class MovieRepository {
             List<Movie> cinema = mapElement.getValue();
             // Traverse through arrayist of cinemas and and delete that movie in movielist
 
-            Iterator it = cinema.iterator();
-            while (it.hasNext()) {
-                Movie moviePresent = (Movie)it.next();
-                String movieName=moviePresent.getName();
-                MovieList.remove(movieName);
-            }
+//            Iterator it = cinema.iterator();
+//            while (it.hasNext()) {
+//                Movie moviePresent = (Movie)it.next();
+//                String movieName=moviePresent.getName();
+//                MovieList.remove(movieName);
+
+//        }
+        for (Movie m : cinema) {
+            String movieName=m.getName();
+            MovieList.remove(movieName);
         }
+    }
         MovieListForDir.clear();
         DirList.clear();
         return "Deleted successfully";
