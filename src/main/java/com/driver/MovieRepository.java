@@ -24,7 +24,6 @@ public class MovieRepository {
         if (director.getName() == null) return;
         String DirName = director.getName();
         DirList.put(DirName, director);
-        return;
     }
 
     public String addMovieDirectorPair(String movieName, String dirName) {
@@ -33,7 +32,7 @@ public class MovieRepository {
         if (DirList.containsKey(dirName)) {
             if (MovieList.containsKey(movieName)) {
                 // both movie and director present in db
-                List list = MovieListForDir.getOrDefault(dirName, new ArrayList<>());
+                List<Movie> list = MovieListForDir.getOrDefault(dirName, new ArrayList<>());
                 list.add(MovieList.get(movieName));
                 MovieListForDir.put(dirName, list);
                 return "Successfully paired director and their movies";
