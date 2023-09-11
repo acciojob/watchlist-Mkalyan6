@@ -54,7 +54,7 @@ public class MovieRepository {
         return MovieListForDir.get(dirName);
     }
 
-    public List findAllMovies() {
+    public List<String> findAllMovies() {
         List<String> AllmovieNames = new ArrayList<>();
         for (Map.Entry<String, Movie> mapElement : MovieList.entrySet()) {
             AllmovieNames.add(mapElement.getKey());
