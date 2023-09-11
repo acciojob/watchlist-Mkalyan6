@@ -49,8 +49,13 @@ public class MovieRepository {
         return DirList.get(dirName);
     }
 
-    public List<Movie> getMoviesByDirectorName(String dirName) {
-        return MovieListForDir.get(dirName);
+    public List<String> getMoviesByDirectorName(String dirName) {
+        List<Movie> moviesofDir=MovieListForDir.get(dirName);
+        List<String>ans=new ArrayList<>();
+        for(Movie m:moviesofDir){
+            ans.add(m.getName());
+        }
+        return ans;
     }
 
     public List<String> findAllMovies() {

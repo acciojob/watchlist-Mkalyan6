@@ -30,7 +30,7 @@ public class MovieService {
         return Repository.getDirectorByName(dirName);
     }
 
-    public List<Movie> getMoviesByDirectorName(String dirName) {
+    public List<String> getMoviesByDirectorName(String dirName) {
         return Repository.getMoviesByDirectorName(dirName);
     }
 
