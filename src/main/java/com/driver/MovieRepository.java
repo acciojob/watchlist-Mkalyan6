@@ -15,13 +15,11 @@ public class MovieRepository {
     HashMap<String, Director> DirList = new HashMap<>();
 
     public void addMovie(Movie movie) {
-        if (movie.getName() == null) return;
         String movieName = movie.getName();
         MovieList.put(movieName, movie);
     }
 
     public void addDirector(Director director) {
-        if (director.getName() == null) return;
         String DirName = director.getName();
         DirList.put(DirName, director);
     }
@@ -50,6 +48,7 @@ public class MovieRepository {
     }
 
     public List<String> getMoviesByDirectorName(String dirName) {
+        if(!MovieListForDir.containsKey(dirName))return new ArrayList<String>();
         List<Movie> moviesofDir=MovieListForDir.get(dirName);
         List<String>ans=new ArrayList<>();
         for(Movie m:moviesofDir){
@@ -70,6 +69,12 @@ public class MovieRepository {
         if (DirList.containsKey(dirName)) {
             DirList.remove(dirName);
             if (MovieListForDir.containsKey(dirName)){
+                //deleete all the movies directed by this director in movie hashmap
+                List<Movie>DirectorMovies=MovieListForDir.get(dirName);
+                for(Movie m:DirectorMovies){
+                    String MovieName=m.getName();
+                    MovieList.remove(MovieName);
+                }
                 MovieListForDir.remove(dirName);
             }
             return "Succesfully Deleted director's movie list";
@@ -89,8 +94,6 @@ public class MovieRepository {
 //                Movie moviePresent = (Movie)it.next();
 //                String movieName=moviePresent.getName();
 //                MovieList.remove(movieName);
-
-//        }
         for (Movie m : cinema) {
             String movieName=m.getName();
             MovieList.remove(movieName);
